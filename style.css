@@ -1,0 +1,597 @@
+/* =============================================================================
+   style.css — G. Aditya Prasad Portfolio
+   Warm neutrals. Muted navy accent. No gradients, no shadows, no decoration.
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   Design tokens
+   ----------------------------------------------------------------------------- */
+
+:root {
+  --bg:           #F5F3F0;
+  --surface:      #EDEAE6;
+  --border:       #D4D0CC;
+  --border-faint: #E2DFD9;
+
+  --text:         #2D2D2D;
+  --text-muted:   #6B6B6B;
+  --text-faint:   #A8A4A0;
+
+  --accent:       #3A4A5C;
+  --accent-hover: #2C3A4A;
+
+  --font:   "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+            Helvetica, Arial, sans-serif;
+
+  --body-size:  1.0625rem;   /* 17px */
+  --body-lh:    1.7;
+  --prose-max:  680px;
+
+  --width:   760px;
+  --gutter:  1.25rem;
+}
+
+/* -----------------------------------------------------------------------------
+   Reset
+   ----------------------------------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background:             var(--bg);
+  color:                  var(--text);
+  font-family:            var(--font);
+  font-size:              var(--body-size);
+  line-height:            var(--body-lh);
+  -webkit-font-smoothing: antialiased;
+}
+
+a        { color: inherit; text-decoration: none; }
+strong   { font-weight: 600; }
+ul, ol   { padding-left: 1.25rem; }
+li       { margin-bottom: 0.35rem; }
+
+/* -----------------------------------------------------------------------------
+   Nav
+   ----------------------------------------------------------------------------- */
+
+.nav {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  padding:         1.125rem var(--gutter);
+  border-bottom:   1px solid var(--border-faint);
+  background:      var(--bg);
+  position:        sticky;
+  top:             0;
+  z-index:         100;
+}
+
+.nav-logo {
+  display:        inline-flex;
+  flex-direction: column;
+  gap:            0.1rem;
+  font-family:    "Times New Roman", Times, Georgia, serif;
+  font-size:      1.875rem;
+  font-weight:    400;
+  font-style:     normal;
+  color:          var(--accent);
+  letter-spacing: -0.01em;
+  line-height:    1;
+}
+.nav-logo:hover { color: var(--accent-hover); }
+
+/* Decoration row: short rule + three spaced dots */
+.logo-dec {
+  display:     flex;
+  align-items: center;
+  gap:         0.4rem;
+}
+
+.logo-dec::before {
+  content:    "";
+  display:    block;
+  width:      1.375rem;
+  height:     1.5px;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.logo-dec::after {
+  content:        "·  ·  ·";
+  font-family:    var(--font);
+  font-size:      0.5625rem;
+  font-style:     normal;
+  letter-spacing: 0.3em;
+  opacity:        0.6;
+}
+
+.nav-links     { display: flex; gap: 2rem; }
+.nav-links a   { font-size: 0.875rem; font-weight: 400; color: var(--text-muted); }
+.nav-links a:hover { color: var(--text); }
+
+/* -----------------------------------------------------------------------------
+   Footer
+   ----------------------------------------------------------------------------- */
+
+.footer {
+  border-top:  1px solid var(--border-faint);
+  padding:     2rem var(--gutter);
+  font-size:   0.8125rem;
+  color:       var(--text-faint);
+  text-align:  center;
+}
+.footer a       { color: var(--text-muted); }
+.footer a:hover { color: var(--text); }
+
+/* -----------------------------------------------------------------------------
+   Layout
+   ----------------------------------------------------------------------------- */
+
+#root { display: flex; flex-direction: column; }
+
+.section {
+  max-width: var(--width);
+  margin:    0 auto;
+  padding:   5.5rem var(--gutter);
+  width:     100%;
+}
+
+/* Section label — small caps, muted accent */
+.label {
+  display:        block;
+  font-size:      0.6875rem;
+  font-weight:    500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color:          var(--accent);
+  margin-bottom:  2rem;
+}
+
+/* Divider between major sections */
+.section + .section {
+  border-top: 1px solid var(--border-faint);
+}
+
+/* -----------------------------------------------------------------------------
+   Hero
+   ----------------------------------------------------------------------------- */
+
+.hero {
+  max-width: var(--width);
+  margin:    0 auto;
+  padding:   8rem var(--gutter) 6.5rem;
+  width:     100%;
+}
+
+.hero-eyebrow {
+  display:        block;
+  font-size:      0.6875rem;
+  font-weight:    500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color:          var(--accent);
+  margin-bottom:  1.5rem;
+}
+
+.hero-name {
+  font-size:      clamp(2.25rem, 5vw, 3.375rem);
+  font-weight:    600;
+  letter-spacing: -0.025em;
+  line-height:    1.1;
+  color:          var(--text);
+  margin-bottom:  1.25rem;
+}
+
+/* Contact icon row */
+.hero-contacts {
+  display:     flex;
+  flex-wrap:   wrap;
+  gap:         0.25rem 1.5rem;
+  margin-bottom: 2.25rem;
+}
+
+.hero-contact-link {
+  display:     inline-flex;
+  align-items: center;
+  gap:         0.45rem;
+  font-size:   0.875rem;
+  color:       var(--text-muted);
+  transition:  color 0.2s;
+  text-decoration: none;
+}
+a.hero-contact-link:hover { color: var(--accent); }
+
+.hero-contact-plain { cursor: default; }
+
+.hero-contact-link svg { flex-shrink: 0; opacity: 0.75; }
+
+/* Action buttons row */
+.hero-actions {
+  display:     flex;
+  align-items: center;
+  gap:         0.75rem;
+  flex-wrap:   wrap;
+}
+
+.cta {
+  display:        inline-flex;
+  align-items:    center;
+  gap:            0.45rem;
+  padding:        0.625rem 1.375rem;
+  background:     var(--accent);
+  color:          #fff;
+  font-family:    var(--font);
+  font-size:      0.875rem;
+  font-weight:    500;
+  letter-spacing: 0.01em;
+  border-radius:  5px;
+  border:         1px solid var(--accent);
+  cursor:         pointer;
+  transition:     background 0.2s, color 0.2s;
+  text-decoration: none;
+}
+.cta:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+
+.cta--ghost {
+  background: transparent;
+  color:      var(--accent);
+}
+.cta--ghost:hover {
+  background: var(--surface);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* -----------------------------------------------------------------------------
+   About
+   ----------------------------------------------------------------------------- */
+
+.about-body {
+  max-width: var(--prose-max);
+}
+
+.about-body p {
+  font-size:     var(--body-size);
+  color:         var(--text);
+  line-height:   var(--body-lh);
+  margin-bottom: 1.125rem;
+}
+.about-body p:last-child { margin-bottom: 0; }
+
+/* -----------------------------------------------------------------------------
+   Case studies — numbered list
+   ----------------------------------------------------------------------------- */
+
+.cs-list { display: flex; flex-direction: column; }
+
+.cs-card {
+  display:       grid;
+  grid-template-columns: 2.75rem 1fr;
+  gap:           1rem;
+  align-items:   start;
+  padding:       1.375rem 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color:         inherit;
+  transition:    background 0.2s;
+  margin:        0 calc(-1 * var(--gutter));
+  padding-left:  var(--gutter);
+  padding-right: var(--gutter);
+}
+.cs-list .cs-card:first-child { border-top: 1px solid var(--border); }
+.cs-card:hover { background: var(--surface); }
+
+.cs-num {
+  font-size:      0.75rem;
+  font-weight:    500;
+  color:          var(--accent);
+  letter-spacing: 0.04em;
+  padding-top:    0.25rem;
+  user-select:    none;
+}
+
+.cs-card-body {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.25rem;
+}
+
+.cs-card-title {
+  font-size:   var(--body-size);
+  font-weight: 500;
+  color:       var(--text);
+  line-height: 1.4;
+}
+.cs-card:hover .cs-card-title { color: var(--accent); transition: color 0.2s; }
+
+.cs-card-tag {
+  font-size: 0.875rem;
+  color:     var(--text-muted);
+}
+
+/* -----------------------------------------------------------------------------
+   Experience / timeline
+   ----------------------------------------------------------------------------- */
+
+.timeline {
+  display:        flex;
+  flex-direction: column;
+  gap:            2.25rem;
+  max-width:      var(--prose-max);
+}
+
+.timeline-item {
+  display:               grid;
+  grid-template-columns: 172px 1fr;
+  gap:                   1rem;
+}
+
+.timeline-meta {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.15rem;
+  padding-top:    0.15rem;
+}
+
+.timeline-period {
+  font-size:            0.8125rem;
+  color:                var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  line-height:          1.4;
+}
+
+.timeline-location {
+  font-size: 0.75rem;
+  color:     var(--text-faint);
+}
+
+.timeline-role {
+  font-size:     0.9375rem;
+  font-weight:   600;
+  color:         var(--text);
+  margin-bottom: 0.3rem;
+  line-height:   1.4;
+}
+.timeline-company { font-weight: 400; color: var(--text-muted); }
+
+.timeline-desc {
+  font-size:   0.9rem;
+  color:       var(--text-muted);
+  line-height: var(--body-lh);
+}
+
+/* -----------------------------------------------------------------------------
+   AI usage — horizontal card grid
+   ----------------------------------------------------------------------------- */
+
+.ai-grid {
+  display:               grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:                   1px;
+  background:            var(--border);   /* gap color becomes the divider */
+  border:                1px solid var(--border);
+  border-radius:         4px;
+  overflow:              hidden;
+}
+
+.ai-card {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.625rem;
+  padding:        1.375rem 1.25rem;
+  background:     var(--bg);
+}
+
+/* Every 4th and 5th card (second row) — very subtle tint */
+.ai-card:nth-child(n+4) { background: var(--surface); }
+
+.ai-area {
+  font-size:      0.6875rem;
+  font-weight:    600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color:          var(--accent);
+  line-height:    1.3;
+}
+
+.ai-desc {
+  font-size:   0.875rem;
+  color:       var(--text-muted);
+  line-height: 1.65;
+}
+
+/* -----------------------------------------------------------------------------
+   Toolkit
+   ----------------------------------------------------------------------------- */
+
+.toolkit-section {
+  display:        flex;
+  flex-direction: column;
+  gap:            1.25rem;
+  max-width:      var(--prose-max);
+}
+
+.toolkit-row {
+  display:     flex;
+  gap:         1rem;
+  align-items: flex-start;
+}
+
+.toolkit-category {
+  font-size:      0.6875rem;
+  font-weight:    500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color:          var(--accent);
+  min-width:      100px;
+  flex-shrink:    0;
+  padding-top:    0.45rem;
+}
+
+.toolkit-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+.pill {
+  display:     inline-block;
+  padding:     0.3rem 0.75rem;
+  border:      1px solid var(--border);
+  border-radius: 3px;
+  font-size:   0.8125rem;
+  color:       var(--text-muted);
+  background:  var(--bg);
+  white-space: nowrap;
+}
+
+/* -----------------------------------------------------------------------------
+   Contact
+   ----------------------------------------------------------------------------- */
+
+.contact-links {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.625rem;
+}
+
+.contact-link {
+  font-size:      var(--body-size);
+  color:          var(--accent);
+  display:        inline-block;
+  width:          fit-content;
+  border-bottom:  1px solid transparent;
+  transition:     border-color 0.2s;
+}
+.contact-link:hover { border-color: var(--accent); }
+
+.contact-meta {
+  font-size:  0.9rem;
+  color:      var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+/* -----------------------------------------------------------------------------
+   Case study detail page
+   ----------------------------------------------------------------------------- */
+
+.cs-detail {
+  max-width: var(--width);
+  margin:    0 auto;
+  padding:   4.5rem var(--gutter) 3rem;
+  width:     100%;
+}
+
+.cs-detail-header {
+  padding-bottom: 2.75rem;
+  margin-bottom:  3rem;
+  border-bottom:  1px solid var(--border);
+  max-width:      var(--prose-max);
+}
+
+.cs-detail-tag {
+  display:        block;
+  font-size:      0.6875rem;
+  font-weight:    500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color:          var(--accent);
+  margin-bottom:  1rem;
+}
+
+.cs-detail-title {
+  font-size:      clamp(1.5rem, 3vw, 2rem);
+  font-weight:    600;
+  letter-spacing: -0.02em;
+  line-height:    1.25;
+  color:          var(--text);
+}
+
+.cs-sections {
+  display:        flex;
+  flex-direction: column;
+  gap:            2.75rem;
+  margin-bottom:  4rem;
+  max-width:      var(--prose-max);
+}
+
+.cs-section-heading {
+  font-size:      0.6875rem;
+  font-weight:    500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color:          var(--accent);
+  margin-bottom:  0.875rem;
+}
+
+.cs-section-body {
+  font-size:   var(--body-size);
+  color:       var(--text);
+  line-height: var(--body-lh);
+}
+.cs-section-body p            { margin-bottom: 1rem; }
+.cs-section-body p:last-child { margin-bottom: 0; }
+.cs-section-body ul,
+.cs-section-body ol           { margin-bottom: 1rem; }
+.cs-section-body strong       { color: var(--text); }
+
+/* Prev / next */
+.cs-nav {
+  display:         flex;
+  justify-content: space-between;
+  align-items:     flex-start;
+  padding-top:     2.5rem;
+  border-top:      1px solid var(--border);
+  gap:             2rem;
+  max-width:       var(--prose-max);
+}
+
+.cs-nav-link {
+  font-size:   0.875rem;
+  color:       var(--text-muted);
+  line-height: 1.5;
+  max-width:   260px;
+}
+.cs-nav-link:hover { color: var(--accent); }
+
+.cs-nav-link--next {
+  text-align:  right;
+  margin-left: auto;
+}
+
+/* -----------------------------------------------------------------------------
+   Responsive
+   ----------------------------------------------------------------------------- */
+
+@media (max-width: 680px) {
+  :root { --gutter: 1.25rem; }
+
+  .nav-links { display: none; }
+
+  .hero { padding: 5.5rem var(--gutter) 4.5rem; }
+
+  /* Case study cards */
+  .cs-card {
+    grid-template-columns: 2rem 1fr;
+    gap:                   0.75rem;
+    padding:               1.125rem var(--gutter);
+    margin:                0 calc(-1 * var(--gutter));
+  }
+
+  /* Timeline: single column */
+  .timeline-item { grid-template-columns: 1fr; gap: 0.2rem; }
+
+  /* AI grid: single column on mobile */
+  .ai-grid { grid-template-columns: 1fr; }
+  .ai-card:nth-child(n+4) { background: var(--bg); }
+  .ai-card:nth-child(even) { background: var(--surface); }
+
+  /* Toolkit: single column */
+  .toolkit-row { flex-direction: column; gap: 0.5rem; }
+  .toolkit-category { min-width: unset; padding-top: 0; }
+
+  .section { padding: 4rem var(--gutter); }
+
+  /* Case study detail */
+  .cs-nav { flex-direction: column; gap: 1rem; }
+  .cs-nav-link--next { text-align: left; margin-left: 0; }
+}
