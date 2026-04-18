@@ -266,7 +266,7 @@ const DATA = {
   experience: [
     {
       role:        "Product Manager",
-      company:     "Veena World (Blue Cloud Tech)",
+      company:     "Veena World",
       period:      "May 2023 – Present",
       location:    "Bengaluru",
       description: "Building consumer and enterprise products across search, billing, ops tooling, and AI integrations for a travel platform serving 150K+ annual bookings and 800+ ops staff.",
