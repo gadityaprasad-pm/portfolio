@@ -15,6 +15,37 @@ const DATA = {
   tagline: "Product Manager. I build systems that actually work.",
   role:    "Product Manager",
 
+  // Longer descriptive hero paragraph (shown below the name)
+  heroDesc: "5+ years turning messy, manual workflows into configurable, scalable systems — across search & discovery, billing engines, ops automation, AI integration, and 0-to-1 platforms in travel-tech and insurance-tech.",
+
+  // Career timeline shown at the bottom of the hero
+  timeline: [
+    { year: "2020", event: "B.Tech, Manipal" },
+    { year: "2021", event: "First PM role" },
+    { year: "2022", event: "Launched LAYR (0→1)" },
+    { year: "2023", event: "Joined Veena World" },
+    { year: "Now",  event: "Shipping at scale", current: true },
+  ],
+
+  // Quick stats for the About section right column
+  aboutStats: [
+    { value: "5+",     label: "Years Experience"  },
+    { value: "150K+",  label: "Annual Bookings"   },
+    { value: "800+",   label: "Ops Staff Served"  },
+    { value: "3,000+", label: "B2B Clients"       },
+  ],
+
+  // Large heading shown under each section's numbered label
+  sectionHeadings: {
+    about:   "Building at the intersection of business & engineering",
+    work:    "Projects & case studies",
+    mySpace: "Things I built outside work",
+    exp:     "Where I've worked",
+    ai:      "AI as a force multiplier",
+    toolkit: "Skills & competencies",
+    contact: "Let's work together",
+  },
+
   // ---------------------------------------------------------------------------
   // CONTACT
   // ---------------------------------------------------------------------------
@@ -57,9 +88,11 @@ const DATA = {
   caseStudies: [
     // ── 1. Billing Rules Engine ──────────────────────────────────────────────
     {
-      id:    "rules-engine",
-      title: "Replacing Hardcoded Chaos with a Rules Engine",
-      tag:   "Visa SOA · Veena World",
+      id:          "rules-engine",
+      title:       "Replacing Hardcoded Chaos with a Rules Engine",
+      tag:         "Visa SOA · Veena World",
+      metric:      "75–90%",
+      metricLabel: "billing errors cut",
       sections: {
         mess: {
           heading: "The Mess",
@@ -86,9 +119,11 @@ const DATA = {
 
     // ── 2. Search & Conversion ───────────────────────────────────────────────
     {
-      id:    "search-conversion",
-      title: "Rebuilding Search and Conversion from First Principles",
-      tag:   "Consumer Product · Veena World",
+      id:          "search-conversion",
+      title:       "Rebuilding Search and Conversion from First Principles",
+      tag:         "Consumer Product · Veena World",
+      metric:      "38%",
+      metricLabel: "conversion lift",
       sections: {
         mess: {
           heading: "The Mess",
@@ -115,9 +150,11 @@ const DATA = {
 
     // ── 3. AI Itinerary Summaries ────────────────────────────────────────────
     {
-      id:    "ai-feature",
-      title: "Shipping an AI Feature Without the Hype",
-      tag:   "ChatGPT Integration · Veena World",
+      id:          "ai-feature",
+      title:       "Shipping an AI Feature Without the Hype",
+      tag:         "ChatGPT Integration · Veena World",
+      metric:      "70%",
+      metricLabel: "manual effort saved",
       sections: {
         mess: {
           heading: "The Mess",
@@ -144,9 +181,11 @@ const DATA = {
 
     // ── 4. Payment Gateway ───────────────────────────────────────────────────
     {
-      id:    "payment-gateway",
-      title: "Owning a Payment Integration End-to-End",
-      tag:   "JustPay Integration · Veena World",
+      id:          "payment-gateway",
+      title:       "Owning a Payment Integration End-to-End",
+      tag:         "JustPay Integration · Veena World",
+      metric:      "Real-time",
+      metricLabel: "payment tracking",
       sections: {
         mess: {
           heading: "The Mess",
@@ -173,9 +212,11 @@ const DATA = {
 
     // ── 5. Shop Floor / Ops Digitization ─────────────────────────────────────
     {
-      id:    "shop-floor",
-      title: "Going to the Shop Floor Before Writing a Single Spec",
-      tag:   "Ops Digitization · Veena World",
+      id:          "shop-floor",
+      title:       "Going to the Shop Floor Before Writing a Single Spec",
+      tag:         "Ops Digitization · Veena World",
+      metric:      "50%",
+      metricLabel: "turnaround cut",
       sections: {
         mess: {
           heading: "The Mess",
@@ -202,9 +243,11 @@ const DATA = {
 
     // ── 6. 0-to-1 Insurance Platform (LAYR) ──────────────────────────────────
     {
-      id:    "layr-insurance",
-      title: "Building a 0-to-1 Insurance Platform in 6 Months",
-      tag:   "B2B SaaS · Hidden Brains InfoTech",
+      id:          "layr-insurance",
+      title:       "Building a 0-to-1 Insurance Platform in 6 Months",
+      tag:         "B2B SaaS · Hidden Brains InfoTech",
+      metric:      "66%",
+      metricLabel: "faster onboarding",
       sections: {
         mess: {
           heading: "The Mess",
@@ -231,9 +274,11 @@ const DATA = {
 
     // ── 7. Internal Tools (CMS, Recs, Ads) ───────────────────────────────────
     {
-      id:    "internal-tools",
-      title: "Three Internal Tools, One Ops Problem",
-      tag:   "CMS · Rec Engine · Ad Platform · Veena World",
+      id:          "internal-tools",
+      title:       "Three Internal Tools, One Ops Problem",
+      tag:         "CMS · Rec Engine · Ad Platform · Veena World",
+      metric:      "10%",
+      metricLabel: "conversion lift",
       sections: {
         mess: {
           heading: "The Mess",
@@ -256,6 +301,19 @@ const DATA = {
           body: `<ul><li>Recommendation engine: 10% conversion lift</li><li>CMS: 70% reduction in manual content ops, 8% organic traffic lift</li><li>Ad platform: enabled paid partner placements as a net-new revenue stream with full conversion tracking</li></ul>`,
         },
       },
+    },
+  ],
+
+  // ---------------------------------------------------------------------------
+  // MY SPACE — side projects, builds, experiments
+  // Add or remove entries freely.
+  // ---------------------------------------------------------------------------
+  mySpace: [
+    {
+      title:       "Shoe Store Website",
+      description: "A fully built e-commerce front-end for a shoe brand. Product listing, detail pages, and cart UI — built from scratch.",
+      url:         "https://zohaibakhter08.github.io/Shoewebsite/",
+      label:       "Live site",
     },
   ],
 
